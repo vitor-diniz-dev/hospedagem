@@ -1,3 +1,15 @@
+// Variáveis OnFly
+
+$primary-100: #009efb;
+$primary-200: #007dc7;
+$success-100: #00835c;
+$info-100: #adadb3;
+$info-200: #84858c;
+$info-300: #84858c;
+$info-400: #696a71;
+$info-500: #58585f;
+$info-600: #434347;
+
 // Quasar SCSS (& Sass) Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -12,14 +24,16 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+$primary: $primary-100;
+$secondary: $success-100;
+$accent: #9c27b0;
 
-$dark      : #1D1D1D;
-$dark-page : #121212;
+$dark: #1d1d1d;
+$dark-page: #121212;
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+$positive: $success-100;
+$negative: #c10015;
+$info: $info-100;
+$warning: #f2c037;
+
+$body-font-size: 12px !default;
