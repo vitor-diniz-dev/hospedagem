@@ -12,11 +12,13 @@
     "dev": "quasar dev",
     "build": "quasar build",
     "postinstall": "quasar prepare",
+    "server": "npx json-server mock/payload.json",
     "test": "vitest",
     "test:ci": "vitest run"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "json-server": "^1.0.0-beta.3",
     "pinia": "^3.0.1",
     "quasar": "^2.16.0",
     "vue": "^3.4.18",

@@ -1,0 +1,52 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Hotel Atlântico Star",
+      "stars": 4,
+      "totalPrice": 100,
+      "dailyPrice": 100,
+      "tax": 80,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "amenities": [1, 2, 3, 4, 5],
+      "hasBreakFast": true,
+      "hasRefundableRoom": true,
+      "district": "Copacabana",
+      "placeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Hotel Atlântico Business",
+      "stars": 3,
+      "totalPrice": 80,
+      "dailyPrice": 80,
+      "tax": 60,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "amenities": [1, 2, 3, 4, 5],
+      "hasBreakFast": true,
+      "hasRefundableRoom": true,
+      "district": "Centro",
+      "placeId": 2
+    }
+  ],
+  "hotels_details": [
+    {
+      "idHotel": 1,
+      "description": "Hotel Atlântico Star é um hotel de luxo localizado em Copacabana, Rio de Janeiro. Oferece uma experiência única com vista para o mar, piscina, spa e restaurante gourmet.",
+      "fullAddress": "Avenida Atlântica, 1234 - Copacabana, Rio de Janeiro - RJ",
+      "images": ["https://cdn.quasar.dev/img/parallax2.jpg"]
+    }
+  ],
+  "cities": [
+    {
+      "name": "Rio de Janeiro",
+      "state": "RJ",
+      "placeId": 1
+    },
+    {
+      "name": "São Paulo",
+      "state": "SP",
+      "placeId": 2
+    }
+  ]
+}
