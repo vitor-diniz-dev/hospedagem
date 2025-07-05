@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('pages/BuscaHoteis.vue'),
+    component: () => import('pages/HomePage.vue'),
   },
 
   // Always leave this as last one,

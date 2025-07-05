@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: $primary;
 
   h1,
   h2,
@@ -11,10 +12,21 @@ body {
   h5,
   h6 {
     font-size: 16px;
+    line-height: 1;
   }
 
   #q-app {
     display: flex;
     justify-content: center;
+  }
+
+  .q-field {
+    .q-field__marginal,
+    .q-field__control,
+    .q-field__native {
+      padding: 0 10px;
+      height: 35px;
+      min-height: 0;
+    }
   }
 }
