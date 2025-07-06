@@ -21,13 +21,29 @@
         <q-tab-panel name="hotel">
           <form @submit.prevent="buscarHotel">
             <div class="flex justify-between f-hotel">
-              <q-input
-                standout
-                outlined
+              <q-select
+                class="f-hotel__select"
                 v-model="destino"
+                outlined
+                use-input
+                hide-selected
+                fill-input
+                hide-dropdown-icon
+                input-debounce="500"
                 placeholder="Destino"
-                class="f-hotel__input"
-              />
+                emit-value
+                map-options
+                :options="options"
+                option-value="placeId"
+                :option-label="optionLabel"
+                @filter="buscaCidades"
+              >
+                <template v-slot:no-option>
+                  <q-item>
+                    <q-item-section class="text-grey"> Nenhuma cidade encontrada </q-item-section>
+                  </q-item>
+                </template>
+              </q-select>
               <q-btn
                 dense
                 rounded
@@ -48,20 +64,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { buscarCidades } from 'src/services/cidade-service';
-import { buscarHoteisPorCidade } from 'src/services/hoteis-service';
+import { useHoteisStore } from 'src/stores/hoteis-store';
+import type { Ref } from 'vue';
+import type { QSelectProps } from 'quasar';
+import type { Cidade } from 'src/models/cidade.model';
 
 const tabAtual = ref('hotel');
-const destino = ref('');
-const buscarHotel = () => buscarHoteisPorCidade(destino.value);
+const destino = ref();
+const options: Ref<Cidade[]> = ref([]);
+const hoteisStore = useHoteisStore();
 
-// Apenas busca cidades se o destino possuir 3 ou mais caracteres
-watch(destino, (val) => {
-  if (val.length >= 3) {
-    buscarCidades(val);
+const buscarHotel = () => {
+  hoteisStore.buscarHoteisPorCidade(destino.value);
+};
+
+// Tratativa para tratar as opções corretamente no select
+const optionLabel = (opt: { name: string; state: string; placeId: number }) =>
+  Object(opt) === opt && 'name' in opt && 'state' in opt ? `${opt.name}, ${opt.state}` : '-';
+
+const buscaCidades: QSelectProps['onFilter'] = (texto, update, abort) => {
+  // Ignora a busca se o texto for menor que 3 caracteres
+  if (texto.length < 3) {
+    abort();
+    return;
   }
-});
+
+  update(() => {
+    options.value.length = 0;
+
+    buscarCidades(texto)
+      .then(({ data }) => {
+        options.value.push(...data);
+        console.log('Cidades encontradas:', options.value);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar cidades:', error);
+      });
+  });
+};
 </script>
 
 <style scoped lang="scss">
@@ -78,7 +120,7 @@ watch(destino, (val) => {
       border-radius: 12px;
       padding: 4px 20px;
     }
-    &__input {
+    &__select {
       width: 500px;
     }
   }
