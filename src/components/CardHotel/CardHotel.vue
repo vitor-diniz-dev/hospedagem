@@ -6,7 +6,7 @@
       <!-- Seção da imagem -->
       <q-card-section class="col-3 no-padding">
         <RatingComponent v-model="hotel.stars" />
-        <q-img class="card-hotel__img" src="https://cdn.quasar.dev/img/parallax2.jpg" />
+        <q-img class="card-hotel__img" :src="hotel.thumb" />
       </q-card-section>
 
       <!-- Seção das informações principais da hospedagem -->
@@ -18,8 +18,19 @@
           </div>
           <div>
             <ul class="card-hotel__lista-comodidades">
-              <li><q-avatar color="info" icon="directions" size="md" /></li>
-              <li><q-avatar color="info" icon="directions" size="md" /></li>
+              <v-template v-for="(comodidade, index) in hotel.amenities" :key="index">
+                <li v-if="comodidadePorId(comodidade)">
+                  <q-avatar
+                    color="info"
+                    :icon="`mdi-${comodidadePorId(comodidade)?.icone}`"
+                    size="md"
+                  >
+                    <q-tooltip anchor="top middle" self="center middle">{{
+                      comodidadePorId(comodidade)?.descricao
+                    }}</q-tooltip>
+                  </q-avatar>
+                </li>
+              </v-template>
             </ul>
             <p class="q-mb-xs" :class="classeCorDestaque(hotel.hasRefundableRoom)">
               <q-icon
@@ -75,10 +86,13 @@
 <script setup lang="ts">
 import { abrirModalHotel } from 'src/services/modal-service';
 import RatingComponent from '../Rating/RatingComponent.vue';
-import type { Hotel } from 'src/models/hotel.model';
+import { type Comodidade, comodidade, type Hotel } from 'src/models/hotel.model';
 
 const visualizarDetalhes = () => abrirModalHotel();
 const classeCorDestaque = (possui: boolean) => (possui ? 'text-positive' : 'text-negative');
+const comodidades = Object.values(comodidade);
+
+const comodidadePorId = (id: Comodidade) => comodidades.find((c) => c.id === id);
 
 defineProps<{
   hotel: Hotel;

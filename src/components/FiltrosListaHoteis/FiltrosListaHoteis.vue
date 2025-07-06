@@ -5,7 +5,10 @@
         borderless
         v-model="ordenacao"
         :options="opcoes"
-        :display-value="`Ordenar por: ${ordenacao ? ordenacao : '*none*'}`"
+        option-value="termoSort"
+        option-label="label"
+        :display-value="`Ordenar por: ${ordenacao ? ordenacao.label : '*none*'}`"
+        @update:model-value="ordenacaoAlterada"
       >
         <template v-slot:prepend>
           <q-icon name="mdi-sort" size="xs" />
@@ -13,7 +16,13 @@
       </q-select>
     </div>
     <div class="shadow-3 filtros__item">
-      <q-input outlined v-model="nomeHotel" placeholder="Nome do Hotel">
+      <q-input
+        outlined
+        v-model="nomeHotel"
+        placeholder="Nome do Hotel"
+        debounce="500"
+        @update:model-value="nomeHotelAlterado"
+      >
         <template v-slot:prepend>
           <q-icon name="mdi-magnify" size="xs" />
         </template>
@@ -23,16 +32,33 @@
 </template>
 
 <script setup lang="ts">
+import { useHoteisStore } from 'src/stores/hoteis-store';
 import { ref } from 'vue';
 
-enum Ordenacao {
-  Preco = 'Preço',
-  Estrelas = 'Estrelas',
+interface Ordenacao {
+  label: string;
+  termoSort: 'totalPrice' | 'stars';
 }
+const OrdenacaoPreco: Ordenacao = {
+  label: 'Preço',
+  termoSort: 'totalPrice',
+};
+const OrdenacaoEstrelas: Ordenacao = {
+  label: 'Estrelas',
+  termoSort: 'stars',
+};
 
-const ordenacao = ref(Ordenacao.Preco);
+const ordenacao = ref(OrdenacaoPreco);
 const nomeHotel = ref('');
-const opcoes = [Ordenacao.Preco, Ordenacao.Estrelas];
+const opcoes = [OrdenacaoPreco, OrdenacaoEstrelas];
+const hotelStore = useHoteisStore();
+
+const ordenacaoAlterada = () => {
+  hotelStore.ordenarHoteis(ordenacao.value.termoSort);
+};
+const nomeHotelAlterado = () => {
+  hotelStore.buscarHoterisPorCidadeNome(nomeHotel.value);
+};
 </script>
 
 <style scoped lang="scss">

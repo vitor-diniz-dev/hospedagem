@@ -60,7 +60,7 @@ describe('PainelBusca', () => {
 
   it('clicar em pesquisar deve buscar hoteis', async () => {
     // Escuta o método de busca de hotéis
-    const spy = vi.spyOn(hoteisService, 'buscarHoteisPorCidade');
+    const spy = vi.spyOn(hoteisService, 'obterCidades');
     const user = userEvent.setup();
 
     render(PainelBusca);
