@@ -1,13 +1,11 @@
 <template>
-  <div class="rating">
-    <q-rating v-model="rating" size="16px" color="primary" readonly />
+  <div v-if="stars" class="rating">
+    <q-rating v-model="stars" size="16px" color="primary" readonly />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const rating = ref(4);
+const stars = defineModel<number>();
 </script>
 
 <style scoped lang="scss">

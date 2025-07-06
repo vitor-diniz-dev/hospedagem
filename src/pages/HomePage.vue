@@ -2,10 +2,12 @@
   <PainelBusca />
   <div class="flex column justify-center container-lista">
     <FiltrosListaHoteis />
-    <div class="container-lista__lista">
-      <CardHotel />
-    </div>
-    <q-pagination v-model="paginaAtual" max="5" direction-links />
+    <ul class="container-lista__lista">
+      <li v-for="(hotel, index) in hoteisStore.hoteis" :key="index">
+        <CardHotel :hotel="hotel" />
+      </li>
+    </ul>
+    <q-pagination v-if="hoteisStore.hoteis.length" v-model="paginaAtual" max="5" direction-links />
   </div>
 
   <q-dialog v-model="modal" persistent>
@@ -20,10 +22,12 @@ import DrawerHotel from 'src/components/DrawerHotel/DrawerHotel.vue';
 import CardHotel from '../components/CardHotel/CardHotel.vue';
 import FiltrosListaHoteis from 'src/components/FiltrosListaHoteis/FiltrosListaHoteis.vue';
 import { modalHotel } from 'src/services/modal-service';
+import { useHoteisStore } from 'src/stores/hoteis-store';
 
 const modal = modalHotel;
 
 const paginaAtual = ref(1);
+const hoteisStore = useHoteisStore();
 </script>
 
 <style scoped lang="scss">
@@ -40,6 +44,11 @@ const paginaAtual = ref(1);
     width: 100%;
     padding: 40px;
     padding-bottom: 20px;
+    list-style: none;
+
+    li:not(:last-child) {
+      margin-bottom: 12px;
+    }
   }
 }
 </style>
