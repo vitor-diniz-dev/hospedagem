@@ -7,7 +7,13 @@
         <CardHotel :hotel="hotel" />
       </li>
     </ul>
-    <q-pagination v-if="hoteisStore.hoteis.length" v-model="paginaAtual" max="5" direction-links />
+    <q-pagination
+      v-if="hoteisStore.hoteis.length"
+      v-model="hoteisStore.filtros.paginaAtual"
+      :max="hoteisStore.filtros.totalPaginas"
+      direction-links
+      @update:model-value="hoteisStore.buscarHoteis"
+    />
   </div>
 
   <q-dialog v-model="modal" persistent>
@@ -16,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import PainelBusca from '../components/PainelBusca/PainelBusca.vue';
 import DrawerHotel from 'src/components/DrawerHotel/DrawerHotel.vue';
 import CardHotel from '../components/CardHotel/CardHotel.vue';
@@ -26,7 +31,6 @@ import { useHoteisStore } from 'src/stores/hoteis-store';
 
 const modal = modalHotel;
 
-const paginaAtual = ref(1);
 const hoteisStore = useHoteisStore();
 </script>
 

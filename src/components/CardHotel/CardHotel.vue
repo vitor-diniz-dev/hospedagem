@@ -18,7 +18,7 @@
           </div>
           <div>
             <ul class="card-hotel__lista-comodidades">
-              <v-template v-for="(comodidade, index) in hotel.amenities" :key="index">
+              <template v-for="(comodidade, index) in hotel.amenities" :key="index">
                 <li v-if="comodidadePorId(comodidade)">
                   <q-avatar
                     color="info"
@@ -30,7 +30,7 @@
                     }}</q-tooltip>
                   </q-avatar>
                 </li>
-              </v-template>
+              </template>
             </ul>
             <p class="q-mb-xs" :class="classeCorDestaque(hotel.hasRefundableRoom)">
               <q-icon

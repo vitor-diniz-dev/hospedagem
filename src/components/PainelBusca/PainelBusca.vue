@@ -77,7 +77,8 @@ const options: Ref<Cidade[]> = ref([]);
 const hoteisStore = useHoteisStore();
 
 const buscarHotel = () => {
-  hoteisStore.buscarHoteisPorCidade(destino.value);
+  hoteisStore.filtros.placeId = destino.value;
+  hoteisStore.buscarHoteis();
 };
 
 // Tratativa para tratar as opções corretamente no select

@@ -18,7 +18,7 @@
     <div class="shadow-3 filtros__item">
       <q-input
         outlined
-        v-model="nomeHotel"
+        v-model="hotelStore.filtros.nomeHotel"
         placeholder="Nome do Hotel"
         debounce="500"
         @update:model-value="nomeHotelAlterado"
@@ -49,15 +49,15 @@ const OrdenacaoEstrelas: Ordenacao = {
 };
 
 const ordenacao = ref(OrdenacaoPreco);
-const nomeHotel = ref('');
 const opcoes = [OrdenacaoPreco, OrdenacaoEstrelas];
 const hotelStore = useHoteisStore();
 
 const ordenacaoAlterada = () => {
-  hotelStore.ordenarHoteis(ordenacao.value.termoSort);
+  hotelStore.filtros.termoSort = ordenacao.value.termoSort;
+  hotelStore.buscarHoteis();
 };
 const nomeHotelAlterado = () => {
-  hotelStore.buscarHoterisPorCidadeNome(nomeHotel.value);
+  hotelStore.buscarHoteis();
 };
 </script>
 
