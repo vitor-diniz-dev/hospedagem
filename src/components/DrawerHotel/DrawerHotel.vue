@@ -10,7 +10,34 @@
     <q-card-section>
       <div class="relative-position">
         <RatingComponent v-model="drawerHotel.stars" />
-        <q-img :src="drawerHotel.detalhes.images[0]" />
+        <q-carousel animated v-model="slide" infinite ref="carouselRef">
+          <q-carousel-slide
+            v-for="(imageUrl, index) in drawerHotel.detalhes.images"
+            :key="index"
+            :name="index"
+            :img-src="imageUrl"
+          />
+          <template v-slot:control>
+            <q-carousel-control position="bottom" class="q-gutter-xs">
+              <q-btn
+                round
+                dense
+                color="white"
+                text-color="primary"
+                icon="chevron_left"
+                @click="proximaImagem"
+              />
+              <q-btn
+                round
+                dense
+                color="white"
+                text-color="primary"
+                icon="chevron_right"
+                @click="imagemAnterior"
+              />
+            </q-carousel-control>
+          </template>
+        </q-carousel>
       </div>
       <h2>Comodidades</h2>
       <div class="row">
@@ -36,20 +63,46 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { QCarousel } from 'quasar';
 import { useHoteisStore } from 'src/stores/hoteis-store';
-import RatingComponent from '../Rating/RatingComponent.vue';
 import { type Comodidade, comodidade } from 'src/models/hotel.model';
+import RatingComponent from '../Rating/RatingComponent.vue';
 
 const drawerHotel = useHoteisStore().drawerHotel;
 
 const comodidades = Object.values(comodidade);
 
 const comodidadePorId = (id: Comodidade) => comodidades.find((c) => c.id === id);
+
+const slide = ref(0);
+
+// Controles para o carousel
+const carouselRef = ref<InstanceType<typeof QCarousel> | null>(null);
+const proximaImagem = () => {
+  carouselRef.value?.next();
+};
+const imagemAnterior = () => {
+  carouselRef.value?.previous();
+};
+
+onMounted(() => {
+  carouselRef.value?.next();
+});
 </script>
 
 <style scoped lang="scss">
 h2 {
   font-weight: 600;
   color: $primary-100;
+}
+.q-carousel {
+  height: 250px;
+  border-radius: 15px;
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 </style>
