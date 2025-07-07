@@ -13,6 +13,12 @@ interface Hotel {
   placeId: number;
 }
 
+interface HotelDetalhes {
+  description: string;
+  fullAddress: string;
+  images: string[];
+}
+
 enum Comodidade {
   SERVICO_QUARTO = 1,
   AR_CONDICIONADO = 2,
@@ -55,5 +61,5 @@ const comodidade = {
   },
 };
 
-export type { Hotel };
+export type { Hotel, HotelDetalhes };
 export { comodidade, Comodidade };

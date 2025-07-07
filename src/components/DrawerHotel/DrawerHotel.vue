@@ -1,48 +1,50 @@
 <template>
-  <q-card>
+  <q-card v-if="drawerHotel">
     <q-card-section>
       <div class="flex justify-between items-center">
-        <h1>Copacabana Palace</h1>
-        <q-btn flat icon="mdi-close" v-close-popup />
+        <h1>{{ drawerHotel.name }}</h1>
+        <q-btn class="no-padding" flat icon="mdi-close" v-close-popup />
       </div>
     </q-card-section>
     <q-separator />
     <q-card-section>
       <div class="relative-position">
-        <RatingComponent />
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" />
+        <RatingComponent v-model="drawerHotel.stars" />
+        <q-img :src="drawerHotel.detalhes.images[0]" />
       </div>
       <h2>Comodidades</h2>
       <div class="row">
-        <div class="col">
+        <div v-for="comodidade in drawerHotel.amenities" :key="comodidade" class="col-6 q-py-xs">
           <div class="flex items-center">
-            <q-icon class="q-mr-xs" name="mdi-wifi" size="16px" />
-            <span>Wi-Fi</span>
-          </div>
-        </div>
-        <div class="col">
-          <div class="flex items-center">
-            <q-icon class="q-mr-xs" name="mdi-wifi" size="16px" />
-            <span>Wi-Fi</span>
+            <q-icon
+              class="q-mr-xs"
+              :name="`mdi-${comodidadePorId(comodidade)?.icone}`"
+              size="16px"
+            />
+            <span>{{ comodidadePorId(comodidade)?.descricao }}</span>
           </div>
         </div>
       </div>
       <h2>Localização</h2>
-      <p>Rua Copacabana, 123</p>
-      <h2>Sobre o Hotel Atlantico</h2>
+      <p>{{ drawerHotel.detalhes.fullAddress }}</p>
+      <h2>Sobre o {{ drawerHotel.name }}</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et porttitor eros. Sed non
-        semper felis. Ut sed interdum velit, et condimentum leo. Proin leo diam, elementum ut libero
-        pulvinar, cursus sagittis justo. Morbi interdum nisi ac risus ultricies, ac suscipit lacus
-        aliquam. Mauris ut tortor ac elit vehicula tempor a tempor mi. Nulla et orci libero. In
-        egestas malesuada odio sodales efficitur. Aliquam eget aliquet massa.
+        {{ drawerHotel.detalhes.description }}
       </p>
     </q-card-section>
   </q-card>
 </template>
 
 <script setup lang="ts">
+import { useHoteisStore } from 'src/stores/hoteis-store';
 import RatingComponent from '../Rating/RatingComponent.vue';
+import { type Comodidade, comodidade } from 'src/models/hotel.model';
+
+const drawerHotel = useHoteisStore().drawerHotel;
+
+const comodidades = Object.values(comodidade);
+
+const comodidadePorId = (id: Comodidade) => comodidades.find((c) => c.id === id);
 </script>
 
 <style scoped lang="scss">

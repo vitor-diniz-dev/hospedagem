@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
-import type { Hotel } from 'src/models/hotel.model';
-import { hoteisPorPagina, obterCidades } from 'src/services/hoteis-service';
+import type { Hotel, HotelDetalhes } from 'src/models/hotel.model';
+import { hoteisPorPagina, obterDetalhesHotel, obterHoteis } from 'src/services/hoteis-service';
+import { abrirModalHotel } from 'src/services/modal-service';
 
-export interface HotelStoreProps {
+interface HotelStoreProps {
   // Filtros relacionados a busca de hoteis
   filtros: {
     placeId: number | null;
@@ -12,6 +13,7 @@ export interface HotelStoreProps {
     totalPaginas: number;
   };
   hoteis: Hotel[];
+  drawerHotel: (Hotel & { detalhes: HotelDetalhes }) | undefined;
 }
 
 export const useHoteisStore = defineStore('hoteis', {
@@ -24,12 +26,13 @@ export const useHoteisStore = defineStore('hoteis', {
       nomeHotel: '',
     },
     hoteis: [],
+    drawerHotel: undefined,
   }),
   actions: {
     // Busca hoteis de acordo com os filtros informados
     buscarHoteis() {
       if (this.filtros.placeId)
-        obterCidades(
+        obterHoteis(
           this.filtros.placeId,
           this.filtros.termoSort,
           this.filtros.paginaAtual,
@@ -42,6 +45,22 @@ export const useHoteisStore = defineStore('hoteis', {
           })
           .catch((error) => {
             console.error('Erro ao buscar hotéis:', error);
+          });
+    },
+    abrirModalHotel(hotel: Hotel) {
+      if (hotel.placeId)
+        obterDetalhesHotel(hotel.placeId)
+          .then(({ data }) => {
+            if (data[0]) {
+              this.drawerHotel = {
+                ...hotel,
+                detalhes: data[0],
+              };
+              abrirModalHotel();
+            }
+          })
+          .catch((error) => {
+            console.error('Erro ao buscar detalhes do hotel:', error);
           });
     },
   },

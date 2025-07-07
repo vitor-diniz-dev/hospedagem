@@ -75,7 +75,7 @@
             class="card-hotel__btn"
             color="primary"
             label="Ver detalhes"
-            @click="visualizarDetalhes"
+            @click="() => visualizarDetalhes(hotel)"
           />
         </div>
       </q-card-section>
@@ -84,11 +84,15 @@
 </template>
 
 <script setup lang="ts">
-import { abrirModalHotel } from 'src/services/modal-service';
 import RatingComponent from '../Rating/RatingComponent.vue';
 import { type Comodidade, comodidade, type Hotel } from 'src/models/hotel.model';
+import { useHoteisStore } from 'src/stores/hoteis-store';
 
-const visualizarDetalhes = () => abrirModalHotel();
+const hoteisStore = useHoteisStore();
+
+const visualizarDetalhes = (hotel: Hotel) => {
+  hoteisStore.abrirModalHotel(hotel);
+};
 const classeCorDestaque = (possui: boolean) => (possui ? 'text-positive' : 'text-negative');
 const comodidades = Object.values(comodidade);
 

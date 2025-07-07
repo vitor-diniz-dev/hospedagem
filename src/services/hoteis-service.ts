@@ -1,10 +1,10 @@
 import axios from 'axios';
-import type { Hotel } from 'src/models/hotel.model';
+import type { Hotel, HotelDetalhes } from 'src/models/hotel.model';
 
-export const hoteisPorPagina = 4;
+const hoteisPorPagina = 4;
 
 // Busca lista de hotéis de acordo com a cidade informada
-export function obterCidades(
+function obterHoteis(
   placeId: number,
   ordenacao: 'totalPrice' | 'stars',
   pagina: number,
@@ -21,3 +21,9 @@ export function obterCidades(
     },
   });
 }
+
+function obterDetalhesHotel(idHotel: number) {
+  return axios.get<HotelDetalhes[]>(`http://localhost:3000/hotels_details?idHotel=${idHotel}`);
+}
+
+export { obterHoteis, obterDetalhesHotel, hoteisPorPagina };
