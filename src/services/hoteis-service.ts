@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { URL_API_DEV } from 'src/environments/environment';
 import type { Hotel, HotelDetalhes } from 'src/models/hotel.model';
 
 const hoteisPorPagina = 4;
@@ -10,7 +11,7 @@ function obterHoteis(
   pagina: number,
   nomeHotel?: string,
 ) {
-  return axios.get<Hotel[]>('http://localhost:3000/hotels', {
+  return axios.get<Hotel[]>(`${URL_API_DEV}/hotels`, {
     params: {
       placeId,
       name_like: nomeHotel,
@@ -23,7 +24,7 @@ function obterHoteis(
 }
 
 function obterDetalhesHotel(idHotel: number) {
-  return axios.get<HotelDetalhes[]>(`http://localhost:3000/hotels_details?idHotel=${idHotel}`);
+  return axios.get<HotelDetalhes[]>(`${URL_API_DEV}/hotels_details?idHotel=${idHotel}`);
 }
 
 export { obterHoteis, obterDetalhesHotel, hoteisPorPagina };
