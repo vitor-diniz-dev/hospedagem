@@ -72,17 +72,183 @@
     },
     {
       "id": 6,
-      "name": "Hotel Atlântico Business",
-      "stars": 3,
-      "totalPrice": 80,
-      "dailyPrice": 80,
-      "tax": 60,
+      "name": "Hotel Unique",
+      "stars": 5,
+      "totalPrice": 800,
+      "dailyPrice": 400,
+      "tax": 100,
       "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
-      "amenities": [1, 2, 3, 4, 5],
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 2, 3, 6],
       "hasBreakFast": true,
       "hasRefundableRoom": true,
-      "district": "Centro",
+      "district": "Jardins",
       "placeId": 2
+    },
+    {
+      "id": 7,
+      "name": "Hotel Renaissance São Paulo",
+      "stars": 5,
+      "totalPrice": 740,
+      "dailyPrice": 370,
+      "tax": 90,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 4, 5],
+      "hasBreakFast": true,
+      "hasRefundableRoom": false,
+      "district": "Consolação",
+      "placeId": 2
+    },
+    {
+      "id": 8,
+      "name": "Hotel Ibis Paulista",
+      "stars": 3,
+      "totalPrice": 320,
+      "dailyPrice": 160,
+      "tax": 60,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [2, 3, 5],
+      "hasBreakFast": false,
+      "hasRefundableRoom": true,
+      "district": "Paulista",
+      "placeId": 2
+    },
+    {
+      "id": 9,
+      "name": "Hotel Blue Tree Premium",
+      "stars": 4,
+      "totalPrice": 460,
+      "dailyPrice": 230,
+      "tax": 70,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 2, 6],
+      "hasBreakFast": true,
+      "hasRefundableRoom": true,
+      "district": "Morumbi",
+      "placeId": 2
+    },
+    {
+      "id": 10,
+      "name": "Hotel Radisson Faria Lima",
+      "stars": 4,
+      "totalPrice": 500,
+      "dailyPrice": 250,
+      "tax": 80,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [2, 4, 5],
+      "hasBreakFast": false,
+      "hasRefundableRoom": false,
+      "district": "Itaim Bibi",
+      "placeId": 2
+    },
+    {
+      "id": 11,
+      "name": "Hotel Ouro Minas",
+      "stars": 5,
+      "totalPrice": 620,
+      "dailyPrice": 310,
+      "tax": 90,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 2, 3, 6],
+      "hasBreakFast": true,
+      "hasRefundableRoom": true,
+      "district": "Ipiranga",
+      "placeId": 3
+    },
+    {
+      "id": 12,
+      "name": "Hotel Royal Savassi",
+      "stars": 4,
+      "totalPrice": 480,
+      "dailyPrice": 240,
+      "tax": 80,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 3, 5],
+      "hasBreakFast": true,
+      "hasRefundableRoom": false,
+      "district": "Savassi",
+      "placeId": 3
+    },
+    {
+      "id": 13,
+      "name": "Hotel Ímpar Suítes",
+      "stars": 3,
+      "totalPrice": 300,
+      "dailyPrice": 150,
+      "tax": 50,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [2, 4],
+      "hasBreakFast": false,
+      "hasRefundableRoom": true,
+      "district": "Cidade Nova",
+      "placeId": 3
+    },
+    {
+      "id": 14,
+      "name": "Hotel Bristol Pampulha",
+      "stars": 4,
+      "totalPrice": 440,
+      "dailyPrice": 220,
+      "tax": 70,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 4, 6],
+      "hasBreakFast": false,
+      "hasRefundableRoom": false,
+      "district": "Pampulha",
+      "placeId": 3
+    },
+    {
+      "id": 15,
+      "name": "Hotel San Diego Lourdes",
+      "stars": 4,
+      "totalPrice": 500,
+      "dailyPrice": 250,
+      "tax": 80,
+      "thumb": "https://cdn.quasar.dev/img/parallax2.jpg",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ],
+      "amenities": [1, 2, 5],
+      "hasBreakFast": true,
+      "hasRefundableRoom": true,
+      "district": "Lourdes",
+      "placeId": 3
     }
   ],
   "hotels_details": [
@@ -90,6 +256,132 @@
       "idHotel": 1,
       "description": "Hotel Atlântico Star é um hotel de luxo localizado em Copacabana, Rio de Janeiro. Oferece uma experiência única com vista para o mar, piscina, spa e restaurante gourmet.",
       "fullAddress": "Avenida Atlântica, 1234 - Copacabana, Rio de Janeiro - RJ",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 2,
+      "description": "O Hotel Windsor Leme está localizado em frente à Praia do Leme e combina conforto moderno com excelente custo-benefício.",
+      "fullAddress": "Avenida Atlântica, 656 - Leme, Rio de Janeiro - RJ",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 3,
+      "description": "Hotel Nacional Rio é uma opção moderna em São Conrado, com estrutura completa e vista privilegiada para o mar e montanhas.",
+      "fullAddress": "Avenida Niemeyer, 769 - São Conrado, Rio de Janeiro - RJ",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 4,
+      "description": "Com localização privilegiada, o Hotel Ipanema Inn oferece elegância e simplicidade a poucos metros da Praia de Ipanema.",
+      "fullAddress": "Rua Maria Quitéria, 27 - Ipanema, Rio de Janeiro - RJ",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 5,
+      "description": "O Hotel Santa Teresa MGallery é um refúgio sofisticado no bairro histórico de Santa Teresa, com design exclusivo e gastronomia refinada.",
+      "fullAddress": "Rua Almirante Alexandrino, 660 - Santa Teresa, Rio de Janeiro - RJ",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 6,
+      "description": "O Hotel Unique é um dos ícones da hotelaria de luxo em São Paulo, localizado nos Jardins. Seu design arrojado e gastronomia refinada garantem uma experiência exclusiva.",
+      "fullAddress": "Avenida Brigadeiro Luís Antônio, 4700 - Jardins, São Paulo - SP",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 7,
+      "description": "O Hotel Renaissance São Paulo fica no coração da Consolação e oferece elegância, spa completo, gastronomia internacional e vista para a Avenida Paulista.",
+      "fullAddress": "Alameda Santos, 2233 - Consolação, São Paulo - SP",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 8,
+      "description": "O Hotel Ibis Paulista é uma opção moderna e econômica localizada na Avenida Paulista, ideal para viagens de negócios e turismo urbano em São Paulo.",
+      "fullAddress": "Avenida Paulista, 2355 - Bela Vista, São Paulo - SP",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 9,
+      "description": "O Hotel Blue Tree Premium Morumbi é conhecido por seu conforto e localização próxima a shoppings e centros empresariais na zona sul paulistana.",
+      "fullAddress": "Avenida Roque Petroni Júnior, 1000 - Morumbi, São Paulo - SP",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 10,
+      "description": "O Hotel Radisson Faria Lima oferece sofisticação e conforto no Itaim Bibi, próximo a ótimos restaurantes, centros de negócios e vida noturna.",
+      "fullAddress": "Rua Fidêncio Ramos, 420 - Itaim Bibi, São Paulo - SP",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 11,
+      "description": "O Hotel Ouro Minas é um dos mais tradicionais de BH, com cinco estrelas, ambientes sofisticados, piscina coberta e fácil acesso ao aeroporto.",
+      "fullAddress": "Avenida Cristiano Machado, 4001 - Ipiranga, Belo Horizonte - MG",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 12,
+      "description": "O Hotel Royal Savassi está localizado em uma das regiões mais nobres de BH. Ideal para quem busca conforto, boa gastronomia e localização estratégica.",
+      "fullAddress": "Rua Alagoas, 699 - Savassi, Belo Horizonte - MG",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 13,
+      "description": "O Hotel Ímpar Suítes é uma excelente escolha para quem busca economia e praticidade, próximo ao centro e à região hospitalar.",
+      "fullAddress": "Rua Aimorés, 501 - Cidade Nova, Belo Horizonte - MG",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 14,
+      "description": "O Hotel Bristol Pampulha oferece tranquilidade e ótima estrutura próxima à Lagoa da Pampulha e ao Estádio Mineirão.",
+      "fullAddress": "Avenida Antônio Carlos, 7596 - Pampulha, Belo Horizonte - MG",
+      "images": [
+        "https://cdn.quasar.dev/img/parallax1.jpg",
+        "https://cdn.quasar.dev/img/parallax2.jpg"
+      ]
+    },
+    {
+      "idHotel": 15,
+      "description": "O Hotel San Diego Lourdes combina elegância e conforto no bairro de Lourdes, uma das áreas mais charmosas e centrais da capital mineira.",
+      "fullAddress": "Avenida Álvares Cabral, 1185 - Lourdes, Belo Horizonte - MG",
       "images": [
         "https://cdn.quasar.dev/img/parallax1.jpg",
         "https://cdn.quasar.dev/img/parallax2.jpg"
@@ -106,6 +398,11 @@
       "name": "São Paulo",
       "state": "SP",
       "placeId": 2
+    },
+    {
+      "name": "Belo Horizonte",
+      "state": "MG",
+      "placeId": 3
     }
   ]
 }
