@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import type { Hotel, HotelDetalhes } from 'src/models/hotel.model';
 import { hoteisPorPagina, obterDetalhesHotel, obterHoteis } from 'src/services/hoteis-service';
 import { abrirModalHotel } from 'src/services/modal-service';
+import { useBannerStore } from './banner-store';
 
 interface HotelStoreProps {
   // Filtros relacionados a busca de hoteis
@@ -43,8 +44,8 @@ export const useHoteisStore = defineStore('hoteis', {
             this.filtros.totalPaginas = Math.ceil(headers['x-total-count'] / hoteisPorPagina);
             console.log('Hotéis encontrados:', data);
           })
-          .catch((error) => {
-            console.error('Erro ao buscar hotéis:', error);
+          .catch(() => {
+            useBannerStore().apresentarBanner('Falha ao buscar hotéis.');
           });
     },
     abrirModalHotel(hotel: Hotel) {
@@ -59,8 +60,8 @@ export const useHoteisStore = defineStore('hoteis', {
               abrirModalHotel();
             }
           })
-          .catch((error) => {
-            console.error('Erro ao buscar detalhes do hotel:', error);
+          .catch(() => {
+            useBannerStore().apresentarBanner('Falha ao buscar detalhes do hotel.');
           });
     },
   },
