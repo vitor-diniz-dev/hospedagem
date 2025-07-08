@@ -1,40 +1,35 @@
 # Hospedagem (hospedagem)
 
-Teste tecnico para OnFly
+Teste técnico para empresa OnFly.
 
-## Install the dependencies
+## Proposta
+
+Desenvolvimento de um SPA Vue capaz de buscar, listar, filtrar e detalhar hotéis.
+
+## Pré-requisitos
+
+NojeJS v22.15.1
+
+## Instalação das dependências
+
 ```bash
-yarn
-# or
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+## Inicializar a API Fake (json-server)
+
+```bash
+npm run server
+```
+
+## Executar o sistema
+
 ```bash
 quasar dev
 ```
 
+## Executar os testes
 
-### Lint the files
 ```bash
-yarn lint
-# or
-npm run lint
+npm run test
 ```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
