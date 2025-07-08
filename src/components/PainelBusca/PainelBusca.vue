@@ -36,7 +36,7 @@
                 :options="options"
                 option-value="placeId"
                 :option-label="optionLabel"
-                @filter="buscaCidades"
+                @filter="filtrarCidades"
               >
                 <template v-slot:no-option>
                   <q-item>
@@ -70,6 +70,7 @@ import { useHoteisStore } from 'src/stores/hoteis-store';
 import type { Ref } from 'vue';
 import type { QSelectProps } from 'quasar';
 import type { Cidade } from 'src/models/cidade.model';
+import { useBannerStore } from 'src/stores/banner-store';
 
 const tabAtual = ref('hotel');
 const destino = ref();
@@ -78,6 +79,8 @@ const hoteisStore = useHoteisStore();
 
 const buscarHotel = () => {
   hoteisStore.filtros.placeId = destino.value;
+  // Reseta o filtro de paginação
+  hoteisStore.filtros.paginaAtual = 1;
   hoteisStore.buscarHoteis();
 };
 
@@ -85,7 +88,7 @@ const buscarHotel = () => {
 const optionLabel = (opt: { name: string; state: string; placeId: number }) =>
   Object(opt) === opt && 'name' in opt && 'state' in opt ? `${opt.name}, ${opt.state}` : '-';
 
-const buscaCidades: QSelectProps['onFilter'] = (texto, update, abort) => {
+const filtrarCidades: QSelectProps['onFilter'] = (texto, update, abort) => {
   // Ignora a busca se o texto for menor que 3 caracteres
   if (texto.length < 3) {
     abort();
@@ -100,8 +103,8 @@ const buscaCidades: QSelectProps['onFilter'] = (texto, update, abort) => {
         options.value.push(...data);
         console.log('Cidades encontradas:', options.value);
       })
-      .catch((error) => {
-        console.error('Erro ao buscar cidades:', error);
+      .catch(() => {
+        useBannerStore().apresentarBanner('Falha ao buscar cidades.');
       });
   });
 };

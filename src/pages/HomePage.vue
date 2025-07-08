@@ -2,7 +2,7 @@
   <PainelBusca />
   <div class="flex column justify-center container-lista">
     <FiltrosListaHoteis />
-    <ul class="container-lista__lista">
+    <ul v-if="hoteisStore.hoteis.length" class="container-lista__lista">
       <li v-for="(hotel, index) in hoteisStore.hoteis" :key="index">
         <CardHotel :hotel="hotel" />
       </li>
@@ -38,11 +38,13 @@ const hoteisStore = useHoteisStore();
 .container-lista {
   position: relative;
   width: 100%;
+  min-height: 900px;
   background-color: #f5f5f5;
   border-radius: 36px;
   margin-top: 40px;
   padding-bottom: 16px;
   align-items: center;
+  justify-content: space-between;
 
   &__lista {
     width: 100%;

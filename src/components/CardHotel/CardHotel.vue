@@ -57,7 +57,7 @@
         <div class="q-pa-md card-hotel__section card-hotel__section__direita">
           <div>
             <p class="text-caption q-mb-xs">Por dia</p>
-            <span class="card-hotel__preco">R$ {{ hotel.totalPrice }}</span>
+            <span class="card-hotel__preco">R$ {{ hotel.dailyPrice }}</span>
           </div>
           <div>
             <p class="text-weight-light text-caption q-mb-none">
