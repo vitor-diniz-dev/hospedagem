@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
+    "@pinia/testing": "^1.0.2",
     "@quasar/app-vite": "^2.1.0",
     "@quasar/quasar-app-extension-testing-unit-vitest": "^1.2.3",
     "@testing-library/dom": "^10.4.0",
